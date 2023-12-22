@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perrito</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="perrito">
+            <div class="cabeza-perrito">
+                <div class="ojo-perrito1">
+                    <div class="pupila-perrito1">
+                        <div id="ojo-detalle1"></div>
+                    </div>
+                </div>
+                <div class="ojo-perrito2">
+                    <div class="pupila-perrito2">
+                        <div id="ojo-detalle2"></div>
+                    </div>
+                </div>
+                <div class="parpado-perrito1"></div>
+                <div class="parpado-perrito2"></div>
+                <div class="lengua-perrito"></div>
+                <div class="labio-perrito1"></div>
+                <div class="labio-perrito2"></div>
+                <div class="nariz-perrito"></div>
+                <div class="patita-perrito1">
+                    <div class="dedito-perrito1"></div>
+                    <div class="dedito-perrito2"></div>
+                </div>
+                <div class="patita-perrito2">
+                    <div class="dedito-perrito1"></div>
+                    <div class="dedito-perrito2"></div>
+                </div>
+                <div class="oreja-perrito1"></div>
+                <div class="oreja-perrito2"></div>
+                <div class="panza-perrito"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        // Script de la animación
+
+        // Variables que encierran todos los elementos div con los que se va a interactuar
+
+        // Orejas
+
+        const orejaPerritoUno = document.querySelector('.oreja-perrito1');
+        const orejaPerritoDos = document.querySelector('.oreja-perrito2');
+
+        // Ojos
+
+        const ojoPerritoUno = document.querySelector('.ojo-perrito1');
+        const ojoPerritoDos = document.querySelector('.ojo-perrito2');
+        const pupilaPerritoUno = document.querySelector('.pupila-perrito1');
+        const pupilaPerritoDos = document.querySelector('.pupila-perrito2');
+        const parpadoPerritoUno = document.querySelector('.parpado-perrito1');
+        const parpadoPerritoDos = document.querySelector('.parpado-perrito2');
+
+        // Nariz
+
+        const perritoNariz = document.querySelector('.nariz-perrito');
+
+        // Panza
+
+        const panzaPerrito = document.querySelector('.perrito');
+        const panza_perrito = document.querySelector('.panza-perrito');
+
+        // Patitas
+
+        const patitaPerritoUno = document.querySelector('.patita-perrito1');
+        const patitaPerritoDos = document.querySelector('.patita-perrito2');
+
+        // Variables que encierran efectos de sonido
+
+        const efectoClick = new Audio('audio/efecto-click.mp3');
+        const efectoRascado = new Audio('audio/efecto-rascar.mp3');
+
+        // Funciones que modifican cada elemento div
+
+        perritoNariz.addEventListener('click', function() {
+            parpadoPerritoUno.classList.add('parpado-perrito-mod1');
+            parpadoPerritoDos.classList.add('parpado-perrito-mod2');
+
+            const modificacionParpadoUno = document.querySelector('.parpado-perrito-mod1');
+            const modificacionParpadoDos = document.querySelector('.parpado-perrito-mod2');
+
+            efectoClick.play();
+
+            setTimeout(() => {
+                modificacionParpadoUno.style.borderBottom = '3px solid black';
+                modificacionParpadoDos.style.borderBottom = '3px solid black';
+            }, 200);
+        });
+
+        panza_perrito.addEventListener('mouseover', function(){
+
+            efectoRascado.play();
+
+            setTimeout(() => {
+                parpadoPerritoUno.classList.remove('parpado-perrito-mod1');
+                parpadoPerritoDos.classList.remove('parpado-perrito-mod2');
+            }, 2000);
+
+            setTimeout(() => {
+                parpadoPerritoUno.style.border = 'none';
+                parpadoPerritoDos.style.border = 'none';
+            }, 2001);
+        });
+
+        panzaPerrito.addEventListener('mouseout', function() {
+
+            efectoRascado.pause();
+        });
+
+        orejaPerritoUno.addEventListener('click', function() {
+            pupilaPerritoUno.classList.add('movimiento-pupila1');
+            pupilaPerritoDos.classList.add('movimiento-pupila1');
+
+            efectoClick.play();
+
+            setTimeout(() => {
+                pupilaPerritoUno.classList.remove('movimiento-pupila1');
+                pupilaPerritoDos.classList.remove('movimiento-pupila1');
+            }, 3000); 
+        });
+
+        orejaPerritoDos.addEventListener('click', function() {
+            pupilaPerritoUno.classList.add('movimiento-pupila2');
+            pupilaPerritoDos.classList.add('movimiento-pupila2');
+
+            efectoClick.play();
+
+            setTimeout(() => {
+                pupilaPerritoUno.classList.remove('movimiento-pupila2');
+                pupilaPerritoDos.classList.remove('movimiento-pupila2');
+            }, 3000);
+        });
+
+        patitaPerritoUno.addEventListener('click', function(){
+            ojoPerritoUno.classList.toggle('movimiento-ojo');
+            ojoPerritoDos.classList.toggle('movimiento-ojo');
+
+            efectoClick.play();
+        });
+
+    </script>
+
+</body>
+</html>
